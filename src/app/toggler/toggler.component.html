@@ -1,0 +1,23 @@
+<div class="col-md-12 row pad-top">
+  <div class="col-md-6">
+    <p *ngIf="isTextVisible; else clickToRead">
+      Cause no unreasonable danger to persons or property.
+    </p>
+    <ng-template #clickToRead>
+      <p class="text-muted">Click to read...</p>
+    </ng-template>
+  </div>
+
+  <div class="col-md-6">
+    <button class="btn btn-primary" (click)="toggleVisibility()">
+      Toggle Visibility
+    </button>
+  </div>
+
+  <div class="col-md-12">
+    <ul *ngFor="let logEvent of clickLog, let i = index">
+      <li [ngStyle]="{backgroundColor: getColor(i)}"
+          [ngClass]="{'white-text': shouldApplyColor(i)}">{{logEvent}}</li>
+    </ul>
+  </div>
+</div>
